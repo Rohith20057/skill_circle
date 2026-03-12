@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login | SkillCircle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-card">
+        <h2>Contact US</h2>
+        <p class="sub-text">Feel Free to Ask</p>
+        <!-- action="../backend/auth/login.php" method="POST" -->
+        <form onsubmit="handleContact(event)">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email address" required>
+            <input type="text" id="feedback" name="feedback" placeholder="Feedback" required>
+
+            <button type="submit" class="btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        async function handleContact(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const feedback = document.getElementById("feedback").value;
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/api/contact", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, email, feedback })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("Feedback submitted successfully!");
+                    window.location.href = "welcome.html";
+                } else {
+                    alert("Error: " + data.detail);
+                }
+            } catch (error) {
+                console.error("Error connecting to server:", error);
+                alert("Cannot connect to backend server.");
+            }
+        }
+    </script>
+</body>
+
+</html>

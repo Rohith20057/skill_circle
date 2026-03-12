@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | SkillCircle</title>
+    <link rel="stylesheet" href="registerstyle.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="gradient-bg">
+
+    <div class="glass-card">
+        <h2>Register</h2>
+
+        <form onsubmit="handleRegister(event)">
+            <div class="input-box">
+                <i class="fa fa-user"></i>
+                <input type="text" id="fullname" placeholder="Full Name" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="confirm_password" placeholder="Confirm Password" required>
+            </div>
+
+            <button type="submit" class="btn-register">Register</button>
+        </form>
+
+        <p class="login-text" style="text-align: center; margin-top: 15px;">
+            Already have an account?
+            <a href="login.html" style="color: #fff; text-decoration: underline;">Login</a>
+        </p>
+    </div>
+
+    <script>
+        async function handleRegister(event) {
+            event.preventDefault();
+            const fullname = document.getElementById("fullname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirm_password = document.getElementById("confirm_password").value;
+
+            if (password !== confirm_password) {
+                alert("Passwords do not match");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/api/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ fullname, email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("Registration successful!");
+                    window.location.href = "login.html";
+                } else {
+                    alert("Error: " + data.detail);
+                }
+            } catch (error) {
+                console.error("Error connecting to server:", error);
+                alert("Cannot connect to backend server.");
+            }
+        }
+    </script>
+
+</body>
+</html>
