@@ -56,7 +56,8 @@
             }
 
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/register", {
+                const API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? "http://127.0.0.1:8000" : "https://your-backend.onrender.com";
+                const response = await fetch(`${API_BASE_URL}/api/register`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
