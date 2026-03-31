@@ -3,64 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SkillCircle - Seamless Peer Learning</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <header class="header-content">
-            <a herf="#" class="logo">
-                <img src="pen-nib-solid-full.svg" alt="logoimage" class="logo-icon"/>
-                <span class="logotext">SkillCricle</span>
-            </a>
-            <nav class="nav">
-                <a href="#home" class="nav-link">Welcome</a>
-                <a href="#features" class="nav-link">Register</a>
-                <a href="#pricing" class="nav-link">Features</a>
-                <a href="#blog" class="nav-link">Source</a>
-                <a href="#about" class="nav-link">About</a>
-            </nav>
-            <button onclick="goToContact()" class="contact-button">
-                Contact Us
-            </button>
-        </header>
+    <!-- Animated background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="glass-nav">
+        <a href="welcome.html" class="logo">
+            <img src="pen-nib-solid-full.svg" alt="SkillCircle Logo" style="height: 24px; filter: invert(1);">
+            <span class="logo-text">SkillCircle</span>
+        </a>
+        <div class="nav-links">
+            <a href="welcome.html">Welcome</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a href="contact.html">Contact Us</a>
         </div>
+    </nav>
 
-        <div class="hero-section">
-        <section class="main-content">
-            <div class="leftbox">
-                    <p class="section-label">Very proud to introduce</p>
-                    <h1 class="section-title">Seamless Peer Learning for a Brighter Future</h1>
-                    <p class="section-description">
-                        SkillCircle is an anonymous peer-learning platform where college students share skills, learn from each other, and grow together without pressure.
-                    </p>
-                    <div class="button-group">
-                        <button onclick="goToLogin()" class="start-button"> Start Now</button>
-                        <button class="tour-button" onclick="goToregister()">Take Tour</button>
-                    </div>
-            </div>
-            <div class="rightbox"></div>
-                <div class="image-container">
-                    <img src="Hero.png" alt="image" class="image-section"/>
-                </div>
-
-            </section>
-        </div>
-
+    <main class="hero-section">
+        <div class="hero-content">
+            <div class="glass-badge">Very proud to introduce</div>
+            <h1 class="hero-title">Seamless Peer Learning<br>for a Brighter Future</h1>
+            <p class="hero-desc">
+                SkillCircle is a modern anonymous peer-learning platform where college students share skills, learn from each other, and grow together without pressure.
+            </p>
+            <div class="hero-buttons">
+                <button onclick="goToLogin()" class="btn btn-primary">Start Now</button>
+                <button onclick="goToRegister()" class="btn btn-secondary">Take Tour</button>
             </div>
         </div>
 
-
+        <div class="hero-image-container">
+            <img src="Hero.png" alt="Students Learning Together" class="hero-image">
+        </div>
+    </main>
 
     <script>
-    function goToLogin() {
-      window.location.href = "login.html";
-    }
-    function goToregister() {
-      window.location.href = "register.html";
-    }
-    function goToContact() {
-      window.location.href = "contact.html";
-    }
-  </script>
+        function goToLogin() { window.location.href = "login.html"; }
+        function goToRegister() { window.location.href = "register.html"; }
+    </script>
 </body>
+</html>
