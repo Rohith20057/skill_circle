@@ -82,7 +82,7 @@ async function login() {
       // Save user to local storage for the dashboard
       localStorage.setItem("user", JSON.stringify(data.user));
       // Redirect to dashboard (index.html)
-      window.location.href = "index.html"; 
+      window.location.href = "index.html";
     } else {
       alert("Error: " + data.detail);
     }
